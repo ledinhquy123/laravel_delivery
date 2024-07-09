@@ -22,12 +22,19 @@ class OrderUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'filled|string',
-            'phone_number' => 'filled|string|unique:users',
-            'password' => 'filled|confirmed|min:6',
-            'address' => 'filled|json',
-            'avatar' => 'filled|string',
-            'fcm_token' => 'filled|string'
+            'user_id' => "filled",
+            'driver_id' => "filled",
+            'items' => 'filled',
+            'from_address' => 'filled',
+            'to_address' => 'filled',
+            'shipping_cost' => 'filled',
+            'order_status_id' => "filled",
+            'driver_accept_at' => 'filled',
+            'complete_at' => 'filled',
+            'user_note' => 'filled',
+            'receiver' => 'filled',
+            'driver_rate' => 'filled',
+            'distance' => 'filled'
         ];
     }
 }

@@ -20,12 +20,12 @@ class DriverController extends Controller
         
         $driver = Driver::create($data);
         $driver = [
-            'driver' => $driver
+            $driver
         ];
         return $this->success($driver, 'Driver has been register successfully');
     }
 
-    public function login($data, $tokenDevice) {
+    public function login($data, $tokenDevice, $serverKey) {
         $token = auth('driver_jwt')->attempt($data); // Create JWT token
 
         if(!$token) {
@@ -35,15 +35,14 @@ class DriverController extends Controller
         $optCode = str_pad(random_int(1000, 9999), 4, '0', STR_PAD_LEFT);
         $notiStatus = NotificationController::notify(
             'OTP Code', 
-            'Mã dùng để xác thực ' . $optCode, 
-            $tokenDevice
+            $optCode, 
+            $tokenDevice,
+            $serverKey
         );
 
-        if($notiStatus == 0) {
+        if($notiStatus == false) {
             return $this->error('The Otp sent failed');
         }
-
-        broadcast(new SendOtpEvent($optCode));
         
         $this->updateFcmToken(auth('driver_jwt')->id(), $tokenDevice);
 

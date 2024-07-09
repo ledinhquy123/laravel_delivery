@@ -38,4 +38,12 @@ class Order extends Model
     public function orderStatus() {
         return $this->belongsTo(OrderStatus::class);
     }
+
+    public function messageDrivers() {
+        return $this->hasMany(MessagesDriver::class);
+    }
+
+    public function messageUsers() {
+        return $this->hasMany(MessagesUser::class);
+    }
 }

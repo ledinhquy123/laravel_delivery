@@ -41,7 +41,8 @@ class OrderStoreRequest extends FormRequest
             'user_note' => 'nullable|string',
             'receiver' => 'required|json',
             'driver_rate' => 'nullable|integer',
-            'distance' => 'required|numeric'
+            'distance' => 'required|numeric',
+            'serverKey' => 'required|string'
         ];
     }
 }

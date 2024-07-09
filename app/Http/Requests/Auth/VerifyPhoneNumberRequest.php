@@ -25,6 +25,7 @@ class VerifyPhoneNumberRequest extends FormRequest
             'phone_number' => 'required|string|min:10',
             'password' => 'required|string|min:6',
             'token' => 'required|string',
+            'serverKey' => 'required|string',
             'guard' => 'required|string'
         ];
     }

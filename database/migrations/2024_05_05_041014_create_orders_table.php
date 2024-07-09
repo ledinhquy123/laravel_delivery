@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('complete_at')->nullable();
             $table->text('user_note')->nullable();
             $table->json('receiver')->nullable();
-            $table->integer('driver_rate')->nullable();
+            $table->double('driver_rate')->nullable();
             $table->double('distance')->default(0.0);
             $table->timestamps();
 

@@ -18,7 +18,7 @@ class UserController extends Controller
         $user->phone_number = $data['phone_number'] ?? $user->phone_number;
         $user->password = isset($data['password']) == 1  ? Hash::make($data['password']) : $user->password;
         $user->address = $data['address'] ?? $user->address;
-        $user->avatar = $data['avatar'] ?? $user->avatar;
+        $user->avatar = isset($data['avatar']) == 1 ? $this->saveImage($data['avatar'], 'users') : $user->avatar;
         $user->fcm_token = $data['fcm_token'] ?? $user->fcm_token;
         $user->save();
         

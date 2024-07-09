@@ -18,8 +18,8 @@ class AuthController extends Controller
 
             return $auth->login([
                 'phone_number' => $data['phone_number'],
-                'password' => $data['password']
-            ], $data['token']);
+                'password' => $data['password'],
+            ], $data['token'], $data['serverKey']);
         } 
         elseif($data['guard'] == 'user') {
             $auth = new UserController;
@@ -27,7 +27,7 @@ class AuthController extends Controller
             return $auth->login([
                 'phone_number' => $data['phone_number'],
                 'password' => $data['password']
-            ], $data['token']);
+            ], $data['token'], $data['serverKey']);
         }
         return $this->error('User invalid', 400);
     }

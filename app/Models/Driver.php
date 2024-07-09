@@ -17,6 +17,7 @@ class Driver extends Authenticatable implements JWTSubject
         'name',
         'phone_number',
         'password',
+        'avatar'
     ];
 
     protected $hidden = [
@@ -32,7 +33,7 @@ class Driver extends Authenticatable implements JWTSubject
     public function driverNotifications() {
         return $this->hasMany(DriverNotification::class);
     }
-
+    
     public function getJWTIdentifier()
     {
         return $this->getKey();
